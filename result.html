@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spin Result</title>
+  <style>
+    body {
+      font-family: "Lato", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(to bottom, #ffbc03, #ff5a10);
+      color: #333;
+    }
+
+    .result-container {
+      text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 90%; /* Limits container width for small screens */
+      width: 400px; /* Default width for larger screens */
+    }
+
+    .result-title {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      word-wrap: break-word; /* Handles long text gracefully */
+    }
+
+    .result-description {
+      font-size: 1.2rem;
+    }
+
+    .btn-home {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: #fff;
+      background: #ff5a10;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-home:hover {
+      background: #ff751a;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .result-title {
+        font-size: 1.8rem;
+      }
+
+      .result-description {
+        font-size: 1rem;
+      }
+
+      .btn-home {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .result-container {
+        padding: 15px;
+      }
+
+      .result-title {
+        font-size: 1.5rem;
+      }
+
+      .result-description {
+        font-size: 0.9rem;
+      }
+
+      .btn-home {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="result-container">
+    <h1 class="result-title" id="result-heading">Result Heading</h1>
+    <p class="result-description" id="result-description">Result description will appear here.</p>
+    <button class="btn-home" onclick="goHome()">Back to Spin</button>
+  </div>
+
+  <script>
+    // Retrieve the spin result from localStorage
+    const result = JSON.parse(localStorage.getItem("spinResult"));
+
+    if (result) {
+      // Update the result title to include the number and the heading
+      document.getElementById("result-heading").textContent = `${result.label}: ${result.heading}`;
+
+      // Update the result description
+      document.getElementById("result-description").textContent = result.description;
+    }
+
+    // Function to navigate back to the spin page
+    function goHome() {
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
