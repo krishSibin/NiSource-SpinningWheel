@@ -18,36 +18,46 @@
     }
 
     .container {
+      position: relative;
       padding: 20px;
       background-color: #ffffff;
       border-radius: 10px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      width: 80%;
-      max-width: 500px;
+      width: 90%;
+      max-width: 800px;
+      height: auto;
+      max-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .title {
-      font-size: 2rem;
-      margin-bottom: 20px;
+      font-size: 3rem;
+      margin-bottom: 70px;
     }
 
     .description {
-      font-size: 1.2rem;
-      margin-bottom: 30px;
+      font-size: 1.5rem;
+      margin-bottom: 20px;
       color: #555;
-      word-spacing: .2rem;
-      align-items: center;
+      word-spacing: 0.2rem;
+      line-height: 1.5;
+      text-align: center;
     }
 
     .btn {
-      padding: 10px 20px;
-      font-size: 1.2rem;
+      margin-top: 25px;
+      padding: 20px 20px;
+      font-size: 1.5rem;
       background-color: #ff5a10;
       color: white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
       transition: background-color 0.3s;
+      margin-left: 150px;
+      margin-right: 150px;
     }
 
     .btn:hover {
