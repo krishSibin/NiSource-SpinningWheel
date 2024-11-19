@@ -31,7 +31,7 @@
       max-width: 90%;
       width: 600px;
       box-sizing: border-box;
-      height: 600px;
+      height: auto;
       justify-content: space-around;
     }
 
@@ -54,12 +54,18 @@
       font-size: 1.5em;
       display: none;
       text-align: left;
+      width: 100%; /* Make it fit the result-container */
+      height: auto;
+      box-sizing: border-box; /* Include padding in dimensions */
+      border-radius: 5px; /* Rounded edges */
     }
 
     .hint-container img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 5px;
+      max-width: 100%; /* Make images responsive */
+      height: auto; /* Maintain aspect ratio */
+      display: block; /* Remove inline whitespace */
+      margin: 0 auto; /* Center the image */
+      border-radius: 5px; /* Match the hint container's radius */
     }
 
     .timer {
@@ -111,7 +117,7 @@
       }
 
       .hint-container {
-        font-size: 0.8em;
+        font-size: 1em;
       }
 
       .timer {
@@ -140,7 +146,7 @@
       }
 
       .hint-container {
-        font-size: 0.7em;
+        font-size: 0.8em;
       }
 
       .timer {
@@ -160,7 +166,6 @@
   </div>
 
   <script>
-    // Map of results to background images
     const backgroundImages = {
       "1": "./background1.jpg",
       "2": "./background2.jpg",
@@ -172,103 +177,64 @@
       "8": "./background8.jpg",
     };
 
-    // Map of hints for each result (could be text or image)
     const hints = {
-      "1": {
-        type: "image", // "text" or "image"
-        content: "res2.jpg"
-      },
-      "2": null, // No hint available for this result
-      "3": {
-        type: "image",
-        content: "res1.jpg"
-      },
-      "4": null, // No hint available for this result
-      "5": {
-        type: "text",
-        content: "psywear"
-      },
-      "6": null, // No hint available for this result
-      "7": {
-        type: "text",
-        content: "ktoroti"
-      },
-      "8": {
-        type: "text",
-        content: "2 words,the last word is horse"
-      }
+      "1": { type: "image", content: "res2.jpg" },
+      "2": null,
+      "3": { type: "image", content: "res1.jpg" },
+      "4": null,
+      "5": { type: "text", content: "psywear" },
+      "6": null,
+      "7": { type: "text", content: "ktoroti" },
+      "8": { type: "text", content: "2 words, the last word is horse" }
     };
 
-    // Retrieve the spin result from localStorage
     const result = JSON.parse(localStorage.getItem("spinResult"));
 
     if (result) {
-      // Update the result title and description
-      // document.getElementById("result-heading").textContent = `${result.label}: ${result.heading}`;
       document.getElementById("result-description").textContent = result.description;
-
-      // Set the background image dynamically based on the result number
       const backgroundImage = backgroundImages[result.label.trim()];
       document.body.style.backgroundImage = `url(${backgroundImage})`;
-
-    
     }
 
-    // Hint functionality
     const hintButton = document.getElementById('show-hint-btn');
     const hintContainer = document.getElementById('hint');
     const timerElement = document.getElementById('timer');
 
-    let hintUsed = false; // To track if the hint has been used
-    let hintTimeout;
+    let hintUsed = false;
     let countdownTimer;
 
-    // Check if hint is available for the current result and disable button if not
     if (!hints[result.label.trim()]) {
-      hintButton.disabled = true; // Disable the hint button if no hint is available
+      hintButton.disabled = true;
     }
 
     hintButton.addEventListener('click', () => {
       if (!hintUsed) {
-        // Get the hint based on the result
         const hint = hints[result.label.trim()];
 
         if (hint) {
-          if (hint.type === "text") {
-            hintContainer.innerHTML = `<p>${hint.content}</p>`;
-          } else if (hint.type === "image") {
-            hintContainer.innerHTML = `<img src="./${hint.content}" alt="Hint Image">`;
-          }
+          hintContainer.innerHTML = hint.type === "text"
+            ? `<p>${hint.content}</p>`
+            : `<img src="./${hint.content}" alt="Hint Image">`;
 
-          // Show hint
           hintContainer.style.display = 'block';
           hintUsed = true;
-          hintButton.disabled = true; // Disable button after use
+          hintButton.disabled = true;
 
-          // Start the countdown timer (30 seconds)
           let timeLeft = 60;
           countdownTimer = setInterval(() => {
-            if (timeLeft > 0) {
-              timerElement.textContent = `Hint will disappear in: ${timeLeft}s`;
-              timeLeft--;
-            } else {
-              clearInterval(countdownTimer); // Stop the timer when it reaches 0
-              hintContainer.style.display = 'none'; // Hide the hint
-              timerElement.textContent = ''; // Remove the timer text
+            timerElement.textContent = `Hint will disappear in: ${timeLeft}s`;
+            if (--timeLeft < 0) {
+              clearInterval(countdownTimer);
+              hintContainer.style.display = 'none';
+              timerElement.textContent = '';
             }
           }, 1000);
-
-          // Hide hint after 30 seconds (60000ms)
-          hintTimeout = setTimeout(() => {
-            hintContainer.style.display = 'none';
-          }, 60000); // 30 seconds
         }
       }
     });
 
-    // Go back to the spinning page
     function goHome() {
-      window.location.href = "landing1.html"; // Adjust the path if needed
+      window.location.href = "landing1.html";
     }
   </script>
 </body>
