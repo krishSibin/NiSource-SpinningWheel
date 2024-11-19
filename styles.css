@@ -12,7 +12,7 @@ body {
   display: grid;
   place-items: center;
   margin: 0;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: black;
   /* background-image: url('./second.png'); */
   background-size: contain;
   background-repeat: no-repeat;
