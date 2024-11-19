@@ -1,12 +1,12 @@
 const sectors = [
-    { color: "#FFBC03", text: "#333333", label: "1         ", heading: "Phishing", description: "Phishing is a type of social engineering attack." },
-    { color: "#FF5A10", text: "#333333", label: "2         ", heading: "Piggybacking", description: "Piggybacking is gaining access to a system using another's credentials." },
-    { color: "#FFBC03", text: "#333333", label: "3         ", heading: "Malware", description: "Malware refers to software designed to harm or exploit systems." },
-    { color: "#FF5A10", text: "#333333", label: "4         ", heading: "Ransomware", description: "Ransomware is a type of malware that demands payment." },
-    { color: "#FFBC03", text: "#333333", label: "5         ", heading: "Spyware", description: "Spyware collects information from a device without consent." },
-    { color: "#FF5A10", text: "#333333", label: "6         ", heading: "Social Engineering", description: "Social engineering exploits human psychology to gain access to systems." },
-    { color: "#FFBC03", text: "#333333", label: "7         ", heading: "Rootkit", description: "Rootkits allow unauthorized access to a system while hiding their presence." },
-    { color: "#FF5A10", text: "#333333", label: "8         ", heading: "Trojan Horse", description: "A Trojan horse disguises itself as a legitimate program." },
+    { color: "#FFBC03", text: "#333333", label: "1         ", heading: "Phishing", description: "________ is a type of social engineering attack." },
+    { color: "#FF5A10", text: "#333333", label: "2         ", heading: "Piggybacking", description: "__________ is gaining access to a system using another's credentials." },
+    { color: "#FFBC03", text: "#333333", label: "3         ", heading: "Malware", description: "__________ refers to software designed to harm or exploit systems." },
+    { color: "#FF5A10", text: "#333333", label: "4         ", heading: "Ransomware", description: "__________ is a type of malware that demands payment." },
+    { color: "#FFBC03", text: "#333333", label: "5         ", heading: "Spyware", description: "_________ collects information from a device without consent." },
+    { color: "#FF5A10", text: "#333333", label: "6         ", heading: "Social Engineering", description: "___________  exploits human psychology to gain access to systems." },
+    { color: "#FFBC03", text: "#333333", label: "7         ", heading: "Rootkit", description: "_________ allow unauthorized access to a system while hiding their presence." },
+    { color: "#FF5A10", text: "#333333", label: "8         ", heading: "Trojan Horse", description: "A _________ disguises itself as a legitimate program." },
   ];
   
   
@@ -104,7 +104,7 @@ const sectors = [
     rotate(); // Initial rotation
     engine(); // Start animation engine
   
-    spinEl.style.background = "#FFBC03"; // Set default background to yellow
+    spinEl.style.background = "yellow"; // Set default background to yellow
   
     spinEl.addEventListener("click", () => {
       if (!angVel) {
